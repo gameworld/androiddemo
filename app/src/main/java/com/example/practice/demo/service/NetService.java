@@ -1,20 +1,29 @@
 package com.example.practice.demo.service;
 
+import android.app.Activity;
 import android.app.IntentService;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.Service;
+import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.os.IBinder;
+import android.os.ResultReceiver;
 import android.util.Log;
+import com.example.practice.demo.activity.MainActivity;
+import android.support.v4.app.NotificationCompat;
 
-public class NetService extends IntentService {
+
+import com.example.practice.demo.R;
+
+public class NetService extends Service {
+
 
     public NetService()
     {
-        super("Net Service");
-    }
-
-    protected void onHandleIntent(Intent intent) {
-        Log.d("Demo","intent");
+        super();
     }
 
     @Override
@@ -38,7 +47,12 @@ public class NetService extends IntentService {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.i("Demo","start command");
+        Log.i("Demo", "start command");
         return START_STICKY;
     }
+
+
+
+    // Send result to activity using ResultReceiver
+
 }
