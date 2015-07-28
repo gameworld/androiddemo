@@ -18,7 +18,7 @@
         </activity>
 
         <service
-            android:name=".NetService"
+            android:name="service.NetService"
             android:enabled="true"
             android:exported="true" >
         </service>

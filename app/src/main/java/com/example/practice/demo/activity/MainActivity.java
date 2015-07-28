@@ -7,8 +7,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.util.Log;
 import android.widget.EditText;
+import android.content.Intent;
 
 import com.example.practice.demo.R;
+import com.example.practice.demo.service.NetService;
 
 
 public class MainActivity extends Activity {
@@ -62,7 +64,10 @@ public class MainActivity extends Activity {
         if(name.equals("") ||password.equals("")) {
             Log.i("Demo", "error input");
         }
-
-
+        else
+        {
+            Intent intent = new Intent(getApplicationContext(), NetService.class);
+            startService(intent);
+        }
     }
 }
