@@ -66,7 +66,8 @@ public class MainActivity extends Activity {
         }
         else
         {
-            Intent intent = new Intent(getApplicationContext(), NetService.class);
+            Log.i("Demo","start service");
+            Intent intent = new Intent(this, NetService.class);
             startService(intent);
         }
     }

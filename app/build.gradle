@@ -1,8 +1,23 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.2.2'
+    }
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+}
+
 apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 21
-    buildToolsVersion "21.1.2"
+    buildToolsVersion '22.0.1'
 
     defaultConfig {
         applicationId "com.example.practice.demo"
