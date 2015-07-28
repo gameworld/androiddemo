@@ -1,9 +1,14 @@
-package com.example.practice.demo;
+package com.example.practice.demo.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.util.Log;
+import android.widget.EditText;
+
+import com.example.practice.demo.R;
 
 
 public class MainActivity extends Activity {
@@ -34,5 +39,30 @@ public class MainActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+
+    /**
+    登陆按钮点击事件
+     */
+    public void buttonLoginOnClick(View view)
+    {
+        Log.i("Demo","btn click");
+        EditText loginEdit=(EditText)findViewById(R.id.loginNameEdit);
+        EditText passwordEdit=(EditText)findViewById(R.id.passwordEdit);
+
+        String name=loginEdit.getText().toString();
+        String password=passwordEdit.getText().toString();
+
+        Log.i("Demo",name);
+
+        Log.i("Demo",password);
+
+
+        if(name.equals("") ||password.equals("")) {
+            Log.i("Demo", "error input");
+        }
+
+
     }
 }

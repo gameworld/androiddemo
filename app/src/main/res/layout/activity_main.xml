@@ -16,7 +16,7 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/editText"
+            android:id="@+id/loginNameEdit"
             android:layout_gravity="center_horizontal"
             android:linksClickable="false"
             android:inputType="textVisiblePassword|text|textNoSuggestions|textPassword"
@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:ems="10"
-            android:id="@+id/editText4"
+            android:id="@+id/passwordEdit"
             android:layout_gravity="center_horizontal"
             android:hint="@string/password_hint"
              />
@@ -37,8 +37,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/login"
-                android:id="@+id/button"
-                android:layout_gravity="center_horizontal" />
+                android:id="@+id/buttonLogin"
+                android:layout_gravity="center_horizontal"
+                android:nestedScrollingEnabled="false"
+                android:onClick="buttonLoginOnClick" />
 
 
     </LinearLayout>
