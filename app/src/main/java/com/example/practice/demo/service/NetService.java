@@ -75,6 +75,8 @@ class NetThread extends Thread
 
     public NetThread(String ip,int port)
     {
+        this.readbuffer=ByteBuffer.allocate(4096);
+        this.writebuffer=ByteBuffer.allocate(4096);
         this.ip=ip;
         this.port=port;
     }
@@ -92,12 +94,11 @@ class NetThread extends Thread
                 this.callback.OnConnect();
 
 
-                Selector selector=Selector.open();
+                selector=Selector.open();
                 sock.getChannel().register(selector, SelectionKey.OP_READ|SelectionKey.OP_WRITE);
                 sock.getChannel().configureBlocking(false);
 
                 while(true) {
-
                     int ret = selector.select();
                     if (ret > 0) {
 
@@ -110,12 +111,30 @@ class NetThread extends Thread
                             SocketChannel chnl=(SocketChannel)key.channel();
                             if(key.isReadable())
                             {
-                                chnl.read(this.readbuffer);
+                                if(chnl.read(this.readbuffer)==0) {
+                                    this.callback.OnClose();
+                                }
+                                else
+                                {
+                                    readbuffer.flip();
+                                    byte [] data=new byte[readbuffer.limit()];
+                                    readbuffer.get(data);
+                                    this.callback.OnData(data);
+                                }
                             }
 
                             if(key.isWritable())
                             {
                                 chnl.write(this.writebuffer);
+                                this.writebuffer.compact();
+                                if(this.writebuffer.remaining()>0)
+                                {
+                                    key.interestOps(SelectionKey.OP_WRITE|SelectionKey.OP_READ);
+                                }
+                                else
+                                {
+                                    key.interestOps(SelectionKey.OP_READ);
+                                }
                             }
 
                             keyIterator.remove();
@@ -142,11 +161,18 @@ class NetThread extends Thread
 
 /**
  */
-    public void Send(ByteBuffer buffer)
+    public void Send(byte [] data)
     {
-       // this.writebuffer.put(buffer);
-        //this.sock.getChannel().register();
-
+        ByteBuffer buffer=ByteBuffer.wrap(data);
+        try {
+            this.sock.getChannel().write(buffer);
+            buffer.compact();
+            this.writebuffer.put(buffer);
+        }
+        catch(Exception e)
+        {
+                Log.d("Demo",e.getMessage());
+        }
     }
 
 
@@ -165,5 +191,6 @@ class NetThread extends Thread
     private int port;
 
     private NetCallBack callback;
+    private  Selector selector;
 
 }
