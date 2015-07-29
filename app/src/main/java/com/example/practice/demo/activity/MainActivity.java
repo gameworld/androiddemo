@@ -12,6 +12,7 @@ import android.content.Intent;
 import com.example.practice.demo.R;
 import com.example.practice.demo.service.MyService;
 import com.example.practice.demo.service.NetService;
+import com.example.practice.demo.service.WeiChatService;
 
 
 public class MainActivity extends Activity {
@@ -20,6 +21,10 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Intent i=new Intent(this,WeiChatService.class);
+        startService(i);
+
     }
 
     @Override
@@ -67,9 +72,8 @@ public class MainActivity extends Activity {
         }
         else
         {
-            Log.i("Demo","start service");
-            Intent intent = new Intent(this, NetService.class);
-            startService(intent);
+
         }
+
     }
 }

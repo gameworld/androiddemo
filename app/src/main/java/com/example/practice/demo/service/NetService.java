@@ -34,7 +34,7 @@ public class NetService extends Service {
         super.onDestroy();
     }
 
-    @Override
+
     public void onCreate() {
         nthread=new NetThread("10.2.12.190",9000);
         nthread.start();
@@ -59,6 +59,7 @@ public class NetService extends Service {
 
 /**
  * 网络收发线程
+ * 尚未完全实现
  */
 
 class NetThread extends Thread

@@ -20,10 +20,15 @@
         </activity>
 
         <service android:name=".service.NetService" >
-             </service>
+        </service>
         <service
             android:name=".service.MyService"
             android:exported="false" >
+        </service>
+        <service
+            android:name=".service.WeiChatService"
+            android:enabled="true"
+            android:exported="true" >
         </service>
     </application>
 

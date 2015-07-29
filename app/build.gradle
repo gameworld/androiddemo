@@ -37,5 +37,5 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:support-v4:21.0.3+'
-    compile 'io.grpc:grpc-all:0.7.1'
+    compile 'com.ning:async-http-client:1.9.29'
 }
