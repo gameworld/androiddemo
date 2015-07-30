@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/activity_vertical_margin"
+        android:name="android.app.ListFragment"
+        android:id="@+id/fragment">
+
+    </fragment>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/fragment"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="420dp">
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sendbtn"
+        android:id="@+id/sendbtn"
+        android:layout_gravity="bottom"
+        android:layout_weight="1"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textMultiLine"
+        android:ems="10"
+        android:id="@+id/editText"
+
+        android:layout_centerHorizontal="true"
+        style="?android:attr/textViewStyle"
+        android:background="@null"
+        android:textColor="@null"
+        android:contentDescription="message content"
+        android:layout_gravity="bottom" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/faceText"
+        android:id="@+id/facebtn"
+        android:layout_toStartOf="@+id/editText"
+        android:layout_gravity="bottom" />
+
+    </LinearLayout>
+
+</RelativeLayout>
